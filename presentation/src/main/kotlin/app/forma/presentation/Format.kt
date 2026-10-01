@@ -19,7 +19,8 @@ object Format {
 
     fun target(target: Target, perSide: Boolean): String {
         val base = when (target) {
-            is Target.Reps -> if (target.min == target.max) "${target.min} reps" else "${target.min}–${target.max} reps"
+            // Word joiners keep "8–12" together when text wraps.
+            is Target.Reps -> if (target.min == target.max) "${target.min} reps" else "${target.min}\u2060–\u2060${target.max} reps"
             is Target.Time -> seconds(target.seconds)
         }
         return if (perSide) "$base each side" else base

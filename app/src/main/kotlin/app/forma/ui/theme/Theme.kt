@@ -163,6 +163,22 @@ fun formaType(fonts: FormaFonts): FormaType {
     )
 }
 
+/**
+ * Caps how far this style grows with the system font size. Used only for labels in fixed-size
+ * containers (bottom bar, day circles, compact action labels) and for very large numbers, which
+ * stay larger than body text even when capped. Body text always scales fully.
+ */
+@Composable
+fun TextStyle.maxScale(max: Float): TextStyle {
+    val scale = androidx.compose.ui.platform.LocalDensity.current.fontScale
+    if (scale <= max) return this
+    val factor = max / scale
+    return copy(
+        fontSize = fontSize * factor,
+        lineHeight = if (lineHeight.isSp) lineHeight * factor else lineHeight,
+    )
+}
+
 val LocalFormaColors = staticCompositionLocalOf { DarkColors }
 val LocalFormaType = staticCompositionLocalOf<FormaType> { error("FormaTheme is not set") }
 

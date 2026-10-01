@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="forma_background">#F6F2EA</color>
+    <color name="forma_icon_background">#000000</color>
+    <color name="forma_icon_foreground">#F4EEE4</color>
+    <color name="forma_icon_accent">#FF713D</color>
+</resources>

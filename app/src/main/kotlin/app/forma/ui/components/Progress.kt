@@ -45,6 +45,7 @@ import app.forma.presentation.today.WeekUi
 import app.forma.ui.icons.FormaIcons
 import app.forma.ui.theme.Forma
 import app.forma.ui.theme.Shapes
+import app.forma.ui.theme.maxScale
 
 /** Thin rounded progress bar, announced with its value. */
 @Composable
@@ -92,7 +93,7 @@ fun WeekStrip(week: WeekUi, modifier: Modifier = Modifier) {
                 ) {
                     Text(
                         day.letter,
-                        style = Forma.type.labelSmall.copy(fontWeight = if (day.isToday) FontWeight.SemiBold else FontWeight.Medium),
+                        style = Forma.type.labelSmall.copy(fontWeight = if (day.isToday) FontWeight.SemiBold else FontWeight.Medium).maxScale(1.3f),
                         color = if (day.isToday) colors.text else colors.textMuted,
                     )
                     Spacer(Modifier.height(6.dp))
@@ -122,7 +123,7 @@ private fun DayDot(state: DayState, dayNumber: Int) {
             }
         }
         DayState.PLANNED -> Box(Modifier.size(size).border(1.5.dp, colors.textSecondary, CircleShape), contentAlignment = Alignment.Center) {
-            Text(dayNumber.toString(), style = Forma.type.labelSmall, color = colors.text)
+            Text(dayNumber.toString(), style = Forma.type.labelSmall.maxScale(1.2f), color = colors.text)
         }
         DayState.NOT_DONE -> Box(Modifier.size(size), contentAlignment = Alignment.Center) {
             Canvas(Modifier.fillMaxSize()) {
@@ -132,10 +133,10 @@ private fun DayDot(state: DayState, dayNumber: Int) {
                     style = Stroke(1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(4.dp.toPx(), 4.dp.toPx()))),
                 )
             }
-            Text(dayNumber.toString(), style = Forma.type.labelSmall, color = colors.textMuted)
+            Text(dayNumber.toString(), style = Forma.type.labelSmall.maxScale(1.2f), color = colors.textMuted)
         }
         DayState.REST -> Box(Modifier.size(size), contentAlignment = Alignment.Center) {
-            Text(dayNumber.toString(), style = Forma.type.labelSmall, color = colors.textMuted)
+            Text(dayNumber.toString(), style = Forma.type.labelSmall.maxScale(1.2f), color = colors.textMuted)
         }
     }
 }
@@ -182,11 +183,11 @@ fun WeeklyBars(weeks: List<WeekBarUi>, modifier: Modifier = Modifier) {
             weeks.forEachIndexed { index, week ->
                 Text(
                     if (index % 2 == 1 || index == weeks.lastIndex) week.label else "",
-                    style = Forma.type.caption,
+                    style = Forma.type.caption.maxScale(1.3f),
                     color = colors.textMuted,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.weight(1f).clearAndSetSemantics { },
-                    maxLines = 1,
+                    maxLines = 2,
                 )
             }
         }

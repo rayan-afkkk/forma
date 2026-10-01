@@ -52,6 +52,7 @@ import app.forma.ui.illustrations.PoseFigure
 import app.forma.ui.theme.Forma
 import app.forma.ui.theme.Layout
 import app.forma.ui.theme.Shapes
+import app.forma.ui.theme.maxScale
 
 /** Large serif page title in the editorial style, with optional eyebrow and supporting line. */
 @Composable
@@ -245,7 +246,7 @@ fun FormaBottomBar(selected: Tab, onSelect: (Tab) -> Unit, modifier: Modifier = 
                     Spacer(Modifier.height(4.dp))
                     Text(
                         tab.label,
-                        style = Forma.type.labelSmall.copy(fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium),
+                        style = Forma.type.labelSmall.copy(fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium).maxScale(1.3f),
                         color = tint,
                         maxLines = 1,
                     )
@@ -279,7 +280,7 @@ fun DemonstrationArea(pattern: MovementPattern, exerciseName: String, modifier: 
         PoseFigure(pattern, Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 18.dp))
         Text(
             "Development placeholder",
-            style = Forma.type.caption,
+            style = Forma.type.caption.maxScale(1.3f),
             color = colors.textMuted,
             modifier = Modifier.align(Alignment.TopStart).padding(14.dp),
         )

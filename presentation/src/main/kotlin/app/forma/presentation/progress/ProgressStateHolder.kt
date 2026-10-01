@@ -90,8 +90,8 @@ class ProgressStateHolder(scope: CoroutineScope, private val services: AppServic
                 val end = start.plusDays(6)
                 val done = finished.count { LocalDate.parse(it.localDate).let { d -> !d.isBefore(start) && !d.isAfter(end) } }
                 val planned = if (back == 0) week.plannedCount else s.user.schedule.sessionsPerWeek
-                val label = "${start.dayOfMonth} ${start.month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }}"
-                WeekBarUi(label, done, planned, back == 0, "Week of $label: $done of $planned planned sessions")
+                val month = start.month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }
+                WeekBarUi("${start.dayOfMonth}\n$month", done, planned, back == 0, "Week of ${start.dayOfMonth} $month: $done of $planned planned sessions")
             }
 
             return ProgressUiState(

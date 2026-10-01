@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- "Forma" is a temporary working name, not a verified or final brand name. -->
+    <string name="app_name">Forma</string>
+    <string name="reminder_channel_name">Workout reminders</string>
+    <string name="reminder_channel_description">A gentle reminder on days you planned to train.</string>
+</resources>

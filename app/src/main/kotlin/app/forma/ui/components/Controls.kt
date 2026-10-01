@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import app.forma.ui.icons.FormaIcons
 import app.forma.ui.theme.Forma
 import app.forma.ui.theme.Shapes
+import app.forma.ui.theme.maxScale
 
 /**
  * Wide pill-shaped segmented control. The selected segment is filled and announced as selected;
@@ -233,7 +234,7 @@ fun Stepper(
             Modifier.weight(1f).semantics(mergeDescendants = true) { stateDescription = "$value $label" },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(value, style = if (large) Forma.type.numberHuge else Forma.type.numberLarge, color = Forma.colors.text, textAlign = TextAlign.Center)
+            Text(value, style = (if (large) Forma.type.numberHuge else Forma.type.numberLarge).maxScale(1.4f), color = Forma.colors.text, textAlign = TextAlign.Center, maxLines = 1)
             Text(label, style = Forma.type.supporting, color = Forma.colors.textSecondary, textAlign = TextAlign.Center)
         }
         RoundIconButton(FormaIcons.Plus, plusDescription, onPlus, size = if (large) 60.dp else 48.dp, outlined = true, enabled = plusEnabled)

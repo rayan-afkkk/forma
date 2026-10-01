@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+: the database and preferences may be included in the person's own device backup
+     and device-to-device transfer, which they control in system settings. Disclosed in Privacy. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="database" path="forma.db" />
+        <include domain="file" path="datastore/" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="database" path="forma.db" />
+        <include domain="file" path="datastore/" />
+    </device-transfer>
+</data-extraction-rules>

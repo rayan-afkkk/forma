@@ -32,6 +32,7 @@ import app.forma.presentation.ItemUi
 import app.forma.ui.icons.FormaIcons
 import app.forma.ui.theme.Forma
 import app.forma.ui.theme.Shapes
+import app.forma.ui.theme.maxScale
 
 @Composable
 fun Divider(modifier: Modifier = Modifier, startIndent: androidx.compose.ui.unit.Dp = 0.dp) {
@@ -144,7 +145,7 @@ fun ExerciseRow(
             contentAlignment = Alignment.Center,
         ) {
             if (index != null) {
-                Text(index.toString(), style = Forma.type.label, color = colors.textSecondary)
+                Text(index.toString(), style = Forma.type.label.maxScale(1.3f), color = colors.textSecondary)
             } else {
                 Icon(patternIcon(item.pattern), contentDescription = null, tint = colors.textSecondary, modifier = Modifier.size(20.dp))
             }

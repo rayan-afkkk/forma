@@ -47,11 +47,12 @@ fun FormaCard(
     color: Color = Forma.colors.surface,
     borderColor: Color = Forma.colors.border,
     padding: androidx.compose.ui.unit.Dp = Dimens.cardPadding,
+    fillWidth: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
         modifier
-            .fillMaxWidth()
+            .let { if (fillWidth) it.fillMaxWidth() else it }
             .clip(Shapes.card)
             .background(color)
             .border(1.dp, borderColor, Shapes.card)
@@ -198,7 +199,7 @@ fun changeIcon(tone: ChangeTone?): ImageVector = when (tone) {
 
 @Composable
 fun StatTile(label: String, value: String, modifier: Modifier = Modifier) {
-    FormaCard(modifier, padding = 16.dp) {
+    FormaCard(modifier, padding = 16.dp, fillWidth = false) {
         Text(value, style = Forma.type.numberMedium, color = Forma.colors.text)
         Spacer(Modifier.size(4.dp))
         Text(label, style = Forma.type.caption, color = Forma.colors.textSecondary)
