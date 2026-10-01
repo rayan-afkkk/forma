@@ -116,6 +116,9 @@ data class ActiveSessionState(
     val paused: Boolean = false,
     val pausedAt: Long? = null,
     val totalPausedMs: Long = 0,
+    /** Timers that were running when the session was paused, restarted on resume. */
+    val resumeRestTimer: Boolean = false,
+    val resumeWorkTimer: Boolean = false,
     val startedAt: Long,
     /** Values the person has dialled in for the current set, kept across interruptions. */
     val draftReps: Int? = null,
