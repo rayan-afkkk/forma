@@ -236,6 +236,15 @@ fun HelpScreen() {
         } else {
             NoteCard(NoteUi(NoteKind.INFO, "Feedback contact details will be added before release."))
         }
+        Spacer(Modifier.height(28.dp))
+        InfoBlock(
+            "Open-source notices",
+            "Fonts: Newsreader (© The Newsreader Project Authors) and Inter (© The Inter Project Authors), " +
+                "both under the SIL Open Font License 1.1. " +
+                "Software: Kotlin, kotlinx libraries and Android Jetpack libraries under the Apache License 2.0. " +
+                "Google Play Billing Library under the Android Software Development Kit License. " +
+                "Version ${services.info.versionName}.",
+        )
     }
 }
 

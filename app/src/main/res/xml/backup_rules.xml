@@ -3,4 +3,6 @@
 <full-backup-content>
     <include domain="database" path="forma.db" />
     <include domain="file" path="datastore/" />
+    <!-- Entitlement is re-checked with Google Play; a cached copy must not move between devices. -->
+    <exclude domain="file" path="datastore/billing.preferences_pb" />
 </full-backup-content>

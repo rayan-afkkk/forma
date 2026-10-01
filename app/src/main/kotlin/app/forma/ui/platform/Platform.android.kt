@@ -51,13 +51,15 @@ fun KeepScreenOn(enabled: Boolean) {
 }
 
 /** Keeps a pure-Kotlin state holder alive across configuration changes, scoped to the screen's back stack entry. */
-class HolderViewModel<T : Any>(factory: (CoroutineScope) -> T) : ViewModel() {
-    val holder: T = factory(viewModelScope)
+class HolderViewModel(factory: (CoroutineScope) -> Any) : ViewModel() {
+    val holder: Any = factory(viewModelScope)
 }
 
+/** The key must identify the holder type and its arguments, e.g. "preview:<planKey>". */
+@Suppress("UNCHECKED_CAST")
 @Composable
 fun <T : Any> rememberStateHolder(key: String, factory: (CoroutineScope) -> T): T =
-    viewModel<HolderViewModel<T>>(key = key) { HolderViewModel(factory) }.holder
+    viewModel(key = key) { HolderViewModel(factory) }.holder as T
 
 @Composable
 fun <T> StateFlow<T>.collectUiState(): State<T> = collectAsStateWithLifecycle()
@@ -86,7 +88,7 @@ private class AndroidCuePlayer(private val context: Context) : CuePlayer {
 
     private fun vibrator(): Vibrator? =
         if (Build.VERSION.SDK_INT >= 31) context.getSystemService(VibratorManager::class.java)?.defaultVibrator
-        else @Suppress("DEPRECATION") context.getSystemService(Vibrator::class.java)
+        else context.getSystemService(Vibrator::class.java)
 
     fun release() {
         tone?.release()
