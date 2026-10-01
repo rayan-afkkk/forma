@@ -4,4 +4,6 @@
     <string name="app_name">Forma</string>
     <string name="reminder_channel_name">Workout reminders</string>
     <string name="reminder_channel_description">A gentle reminder on days you planned to train.</string>
+    <string name="reminder_title">Today\'s session is ready</string>
+    <string name="reminder_text">%1$s, about %2$d min. Open the app whenever it suits you.</string>
 </resources>

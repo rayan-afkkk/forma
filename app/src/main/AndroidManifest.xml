@@ -29,5 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Keeps reminders at local time after travel or a clock change. Both broadcasts are
+             exempt from the implicit-broadcast limits and are sent only by the system. -->
+        <receiver
+            android:name=".android.reminders.TimeChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
